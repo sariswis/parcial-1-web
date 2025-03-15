@@ -1,4 +1,4 @@
-import { Card } from 'react-bootstrap';
+import { FormattedMessage } from 'react-intl';
 
 function RobotCard({ robot }) {
   const urlRobot = 'https://raw.githubusercontent.com/fai-aher/T34-Wiki-Backup/refs/heads/main/images/robot'+ robot.id + '.png';
@@ -10,9 +10,9 @@ function RobotCard({ robot }) {
       <h5 className="pb-2"><strong>{robot.nombre}</strong></h5>
       <img className="mb-3 w-75" style={borderStyle} src={urlRobot} alt={robot.nombre}/>
       <div className='ms-3 me-3 text-start'>
-        <p><strong>➞ Año de fabricación:</strong> {robot.añoFabricacion}</p>
-        <p><strong>➞ Capacidad de procesamiento:</strong> {robot.capacidadProcesamiento}</p>
-        <p><strong>➞ Humor:</strong> {robot.humor}</p>
+        <p><strong>➞ <FormattedMessage id="yearOfProductionLabel"/>:</strong> {robot.añoFabricacion}</p>
+        <p><strong>➞ <FormattedMessage id="processingCapacityLabel"/>:</strong> {robot.capacidadProcesamiento}</p>
+        <p><strong>➞ <FormattedMessage id="humorLabel"/>:</strong> {robot.humor}</p>
       </div>
     </div>
   );

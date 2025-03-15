@@ -1,0 +1,17 @@
+{
+    "navbarTitle": "Adopt a Robot with Robot Lovers!",
+    "loginTitle": "Log in",
+    "usernameLabel": "Username",
+    "passwordLabel": "Password",
+    "loginButton": "Log In",
+    "cancelButton": "Cancel",
+    "authErrorMessage": "Authentication error. Please check your credentials",
+    "idHeader": "ID",
+    "nameHeader": "Name",
+    "modelHeader": "Model",
+    "notFoundPlaceholder": "Not found",
+    "manufacturerHeader": "Manufacturer",
+    "yearOfProductionLabel": "Year of production",
+    "processingCapacityLabel": "Processing capacity",
+    "humorLabel": "Humor"
+}

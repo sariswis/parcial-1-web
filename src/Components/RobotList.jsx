@@ -1,8 +1,14 @@
 import RobotRow from './RobotRow';
 import { useEffect } from 'react';
+import { FormattedMessage } from 'react-intl';
 
 function RobotList({robots, setSelectedRobot, setRobots}) {
-    const headers = ['ID', 'Nombre', 'Modelo', 'Empresa fabricante'];
+    const headers = [
+      <FormattedMessage id="idHeader"/>, 
+      <FormattedMessage id="nameHeader"/>,
+      <FormattedMessage id="modelHeader"/>,
+      <FormattedMessage id="manufacturerHeader"/>
+    ];
 
     useEffect(() => {
         fetch('http://localhost:3001/robots')

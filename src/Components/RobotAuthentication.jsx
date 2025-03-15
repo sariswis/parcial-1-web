@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { Container, Row } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import { FormattedMessage } from 'react-intl';
 
 function RobotAuthentication(props) {
   const [usuario, setUsuario] = useState({
@@ -11,7 +12,7 @@ function RobotAuthentication(props) {
 
   const [validationState, setValidationState] = useState(""); 
 
-  const inputStyle = { borderRadius: "0", backgroundColor: "#dcdcdc" }
+  const inputStyle = { borderRadius: "0", backgroundColor: "#dcdcdc", border: validationState ? "1px solid #CD3232" : "0px solid #CD3232" }
   const labelStyle = { textAlign: "left", display: "block", fontWeight: "bold" }
   const primaryButtonStyle = { borderRadius: "0", backgroundColor: "#003b93", color: "white", fontWeight: "bold" }
   const secondaryButtonStyle = { borderRadius: "0", backgroundColor: "#e65d5d", color: "black", fontWeight: "bold" }
@@ -32,7 +33,7 @@ function RobotAuthentication(props) {
       setValidationState('');
       navigate('/robots');
     } else {
-      setValidationState('Error de autenticación. Revise sus credenciales');
+      setValidationState(<FormattedMessage id="authErrorMessage"/>);
     }
   };
 
@@ -49,10 +50,12 @@ function RobotAuthentication(props) {
     <Container>
         <Row className="mt-4 mb-4 justify-content-center">
             <Form className="col-8" onSubmit={handleSubmit}>
-            <h2 style={props.titleStyle}>Inicio de sesión</h2>
+            <h2 style={props.titleStyle}>
+                <FormattedMessage id="loginTitle"/>
+            </h2>
             <Form.Group className="mt-2 mb-3">
                 <Form.Label style={labelStyle}>
-                  Nombre de usuario
+                  <FormattedMessage id="usernameLabel"/>
                 </Form.Label>
                 <Form.Control
                 type="username"
@@ -66,7 +69,7 @@ function RobotAuthentication(props) {
 
             <Form.Group className="mb-3">
                 <Form.Label style={labelStyle}>
-                  Contraseña
+                  <FormattedMessage id="passwordLabel"/>
                 </Form.Label>
                 <Form.Control
                 type="password"
@@ -80,10 +83,10 @@ function RobotAuthentication(props) {
             
             <Container className="d-flex justify-content-between">
               <Button variant="primary" type="submit" style={primaryButtonStyle} className="w-50 me-2">
-                  Ingresar
+                <FormattedMessage id="loginButton"/>
               </Button>
               <Button variant="secondary" type="button" onClick={handleCancel} style={secondaryButtonStyle} className="w-50 ms-2">
-                  Cancelar
+                <FormattedMessage id="cancelButton"/>
               </Button>
             </Container>
 
