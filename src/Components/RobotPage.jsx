@@ -8,7 +8,7 @@ function RobotPage() {
     const [selectedRobot, setSelectedRobot] = useState(null);
     return (
       <Container>
-        <Row className="mt-3">
+        <Row className="mt-4 mb-4 justify-content-center">
           <Col lg="8">
             <RobotList robots={robots} setSelectedRobot={setSelectedRobot} setRobots={setRobots} />
           </Col>

@@ -8,13 +8,16 @@ import RobotAuthentication from './Components/RobotAuthentication';
 import RobotFooter from './Components/RobotFooter';
 
 function App() {
+
+  const titleStyle = { fontWeight: "bold" }
+
   return (
     <IntlProvider locale='en' messages={{}}>
       <BrowserRouter>
           <div className="App">
-            <RobotNavbar />
+            <RobotNavbar titleStyle={titleStyle} />
             <Routes>
-              <Route path="/" element={<RobotAuthentication />} />
+              <Route path="/" element={<RobotAuthentication titleStyle={titleStyle} />} />
               <Route path="/robots" element={<RobotPage />} />
            </Routes>
             <RobotFooter />

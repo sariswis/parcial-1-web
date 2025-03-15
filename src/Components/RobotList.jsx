@@ -2,7 +2,7 @@ import RobotRow from './RobotRow';
 import { useEffect } from 'react';
 
 function RobotList({robots, setSelectedRobot, setRobots}) {
-    const headers = ['Id', 'Nombre', 'Modelo', 'Empresa fabricante'];
+    const headers = ['ID', 'Nombre', 'Modelo', 'Empresa fabricante'];
 
     useEffect(() => {
         fetch('http://localhost:3001/robots')
@@ -14,16 +14,16 @@ function RobotList({robots, setSelectedRobot, setRobots}) {
 
     return (
       <table className="table">
-        <thead className="bg-dark text-white">
+        <thead className="table-dark">
           <tr>
             {headers.map((h, i) => (
-                <th key={i}>{h}</th>
+                <th className="text-start" key={i}>{h}</th>
             ))}
           </tr>
         </thead>
         <tbody>
             { robots.map((r, i) => (
-                    <RobotRow key={i} robot={r} onClick={setSelectedRobot}/>
+                <RobotRow key={i} robot={r} onClick={setSelectedRobot}/>
             ))}
         </tbody>
       </table>
