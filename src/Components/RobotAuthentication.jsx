@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 
 function RobotAuthentication(props) {
-  const [usuario, setUsuario] = useState({
+  const [user, setUser] = useState({
     username: '',
     password: ''
   });
@@ -17,30 +17,45 @@ function RobotAuthentication(props) {
   const primaryButtonStyle = { borderRadius: "0", backgroundColor: "#003b93", color: "white", fontWeight: "bold" }
   const secondaryButtonStyle = { borderRadius: "0", backgroundColor: "#e65d5d", color: "black", fontWeight: "bold" }
   const validationTextStyle = { color: " #CD3232", fontWeight: "bold" }
-
+  
   const navigate = useNavigate();
 
   const handleInputChange = (e) => {
-    setUsuario({
-      ...usuario,
+    setUser({
+      ...user,
       [e.target.name]: e.target.value
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (usuario.username === 'admin' && usuario.password === 'pass') {
-      setValidationState('');
-      navigate('/robots');
-    } else {
-      setValidationState(<FormattedMessage id="authErrorMessage"/>);
-    }
+    
+    fetch("http://localhost:3001/login", {
+      method: "POST",
+      body: JSON.stringify({
+        login: user.username,
+        password: user.password
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        if (json.status === "success") {
+          setValidationState('');
+          navigate('/robots');
+          console.log(json.message);
+        } else {
+          setValidationState(<FormattedMessage id="authErrorMessage"/>);
+        }
+      });
   };
 
   const handleCancel = (e) => {
     e.preventDefault();
-    setUsuario({
-      ...usuario,
+    setUser({
+      ...user,
       username: '',
       password: ''
     });
@@ -61,7 +76,7 @@ function RobotAuthentication(props) {
                 type="username"
                 placeholder=""
                 name="username"
-                value={usuario.username}
+                value={user.username}
                 onChange={handleInputChange}
                 style={inputStyle}
                 />
@@ -75,7 +90,7 @@ function RobotAuthentication(props) {
                 type="password"
                 placeholder=""
                 name="password"
-                value={usuario.password}
+                value={user.password}
                 onChange={handleInputChange}
                 style={inputStyle}
                 />

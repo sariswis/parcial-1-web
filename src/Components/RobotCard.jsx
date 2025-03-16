@@ -1,6 +1,8 @@
 import { FormattedMessage } from 'react-intl';
 
 function RobotCard({ robot }) {
+  /* The backend image link does not work, because it is a raw GitHub link */ 
+  /* It is necessary to open the image in a new tab and this is the obtained link */
   const urlRobot = 'https://raw.githubusercontent.com/fai-aher/T34-Wiki-Backup/refs/heads/main/images/robot'+ robot.id + '.png';
 
   const borderStyle = { border: "1px solid black", backgroundColor: "#D9D9D980" };
