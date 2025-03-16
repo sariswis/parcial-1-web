@@ -82,7 +82,7 @@ function RobotAuthentication(props) {
                 />
             </Form.Group>
 
-            <Form.Group className="mb-3">
+            <Form.Group className="mt-2 mb-3">
                 <Form.Label style={labelStyle}>
                   <FormattedMessage id="passwordLabel"/>
                 </Form.Label>
@@ -96,7 +96,7 @@ function RobotAuthentication(props) {
                 />
             </Form.Group>
             
-            <Container className="d-flex justify-content-between">
+            <Container className="mt-4 d-flex justify-content-between">
               <Button variant="primary" type="submit" style={primaryButtonStyle} className="w-50 me-2">
                 <FormattedMessage id="loginButton"/>
               </Button>
